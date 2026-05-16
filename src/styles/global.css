@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@layer base {
+  .prose a {
+    color: var(--color-blue-600);
+  }
+  .prose a:hover {
+    color: var(--color-blue-800);
+  }
+}
