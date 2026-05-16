@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Marissa Joy — personal site' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-white text-gray-900 flex flex-col">
+    <header class="border-b border-gray-200">
+      <nav class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href={base} class="font-semibold text-lg hover:text-gray-600 transition-colors">
+          Marissa Joy
+        </a>
+        <ul class="flex gap-6 text-sm">
+          <li><a href={`${base}about`} class="hover:text-gray-600 transition-colors">About</a></li>
+          <li><a href={`${base}projects`} class="hover:text-gray-600 transition-colors">Projects</a></li>
+          <li><a href={`${base}blog`} class="hover:text-gray-600 transition-colors">Blog</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="flex-1 max-w-3xl mx-auto px-4 py-12 w-full">
+      <slot />
+    </main>
+
+    <footer class="border-t border-gray-200">
+      <div class="max-w-3xl mx-auto px-4 py-6 text-sm text-gray-500 flex gap-4">
+        <a href="https://github.com/mjoy296" class="hover:text-gray-900 transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/marissajoy/" class="hover:text-gray-900 transition-colors">LinkedIn</a>
+      </div>
+    </footer>
+  </body>
+</html>
